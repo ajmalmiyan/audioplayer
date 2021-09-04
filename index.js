@@ -5,8 +5,8 @@ const ctx = canvas.getContext("2d");
 let lines = Array(240)
   .fill()
   .map((u) => ({
-    y: Math.round(Math.random() * (50 - 20 + 1) + 20),
-    h: Math.round(Math.random() * (125 - 50 + 1) + 50),
+    yaxis: Math.round(Math.random() * (50 - 20 + 1) + 20),
+    height: Math.round(Math.random() * (125 - 50 + 1) + 50),
   }));
 //   console.log(lines)
 
@@ -23,7 +23,12 @@ button.addEventListener("click", () => {
 });
 
 function start() {
-  console.log("start");
+  let line = 0;
+  setInterval(() => {
+    ctx.fillStyle = "#ff00cc";
+    ctx.fillRect(line * 5, lines[line].yaxis, 3, lines[line].height);
+    line++;
+}, 500);
 }
 
 function pause() {
@@ -33,7 +38,7 @@ function pause() {
 function createLines() {
   lines.map((item, i) => {
     ctx.fillStyle = "#63625e";
-    ctx.fillRect(i * 5, item.y, 3, item.h);
+    ctx.fillRect(i * 5, item.yaxis, 3, item.height);
   });
 }
 createLines();
