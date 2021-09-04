@@ -1,6 +1,5 @@
 const canvas = document.getElementById("canvas");
-const startButton = document.getElementById("start");
-const pauseButton = document.getElementById("pause");
+const button = document.getElementById("button");
 const ctx = canvas.getContext("2d");
 
 let lines = Array(240)
@@ -11,12 +10,25 @@ let lines = Array(240)
   }));
 //   console.log(lines)
 
-startButton.addEventListener("click", () => {});
-pauseButton.addEventListener("click", () => {});
+let count = 1;
+button.addEventListener("click", () => {
+  if (count % 2 === 1) {
+    start();
+    button.innerText = "pause";
+  } else {
+    pause();
+    button.innerText = "start";
+  }
+  count++;
+});
 
-function start() {}
+function start() {
+  console.log("start");
+}
 
-function pause() {}
+function pause() {
+  console.log("pause");
+}
 
 function createLines() {
   lines.map((item, i) => {
