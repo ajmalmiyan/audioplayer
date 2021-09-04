@@ -21,10 +21,10 @@ button.addEventListener("click", () => {
   }
   count++;
 });
-
+let interval;
 function start() {
   let line = 0;
-  setInterval(() => {
+  interval = setInterval(() => {
     ctx.fillStyle = "#ff00cc";
     ctx.fillRect(line * 5, lines[line].yaxis, 3, lines[line].height);
     line++;
@@ -32,13 +32,32 @@ function start() {
 }
 
 function pause() {
-  console.log("pause");
+    clearInterval(interval);
 }
 
 function createLines() {
   lines.map((item, i) => {
-    ctx.fillStyle = "#63625e";
-    ctx.fillRect(i * 5, item.yaxis, 3, item.height);
+    if (i === 3 || i === 52 || i === 158 || i === 221) {
+        ctx.fillStyle = "green";
+        ctx.fillRect(i * 5, 0, 3, item.yaxis*2);
+        ctx.fillRect(i * 5 - 15, 0, 52, 15);
+        ctx.fillStyle = "white";
+        if (i === 3) {
+          ctx.fillText("Introduction", 0, 10);
+        } else if (i === 52) {
+          ctx.fillText("Rapport", i * 5 - 15, 10);
+        } else if (i === 158) {
+          ctx.fillText("Maths", i * 5 - 15, 10);
+        } else if (i === 221) {
+          ctx.fillText("Referrals", i * 5 - 15, 10);
+        }
+        ctx.fillStyle = "#63625e";
+        ctx.fillRect(i * 5, item.yaxis, 3, item.height);
+      }
+      else{      
+      ctx.fillStyle = "#63625e";
+      ctx.fillRect(i * 5, item.yaxis, 3, item.height);
+      }
   });
 }
 createLines();
