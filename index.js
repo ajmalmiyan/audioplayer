@@ -14,15 +14,17 @@ let count = 1;
 button.addEventListener("click", () => {
   if (count % 2 === 1) {
     start();
-    button.innerText = "pause";
+    // button.innerText = "pause";
+    button.style.backgroundImage = "url(https://image.flaticon.com/icons/png/512/61/61180.png)";
   } else {
     pause();
-    button.innerText = "start";
+    button.style.backgroundImage = "url(https://www.pinclipart.com/picdir/middle/217-2172073_free-music-icons-play-button-icon-minimalist-clipart.png)";
   }
   count++;
 });
 let interval;
 function start() {
+    console.log("afds")
   let line = 0;
   interval = setInterval(() => {
     ctx.fillStyle = "#ff00cc";
@@ -32,6 +34,7 @@ function start() {
 }
 
 function pause() {
+    console.log("aaaaa")
     clearInterval(interval);
 }
 
